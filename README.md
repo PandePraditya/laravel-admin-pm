@@ -69,5 +69,5 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 
 ## Database uses for this project
 
-- DB_NAME: laravel-migrate-pm
+- DB_NAME: laravel-pm
 - DB_CONNECTION: mysql
