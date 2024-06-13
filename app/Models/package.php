@@ -16,6 +16,6 @@ class package extends Model
     ];
 
     public function member() {
-        return $this->hasMany(member::class);
+        return $this->hasMany(Member::class);
     }
 }

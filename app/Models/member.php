@@ -17,11 +17,11 @@ class member extends Model
 
     // belongsTo yang berarti dimiliki oleh table package
     public function package() {
-        return $this->belongsTo(package::class);
+        return $this->belongsTo(Package::class);
     }
 
     public function transaction()
     {
-        return $this->hasMany(transaction::class);
+        return $this->hasMany(Transaction::class);
     }
 }

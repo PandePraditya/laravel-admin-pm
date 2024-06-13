@@ -20,7 +20,7 @@ class transaction extends Model
     // membuat relationship many to many dengan table product melalui pivot point transaction_product
     public function product()
     {
-        return $this->belongsToMany(product::class)
+        return $this->belongsToMany(Product::class)
         ->withPivot('quantity', 'selling_price', 'sub_total')->withTimestamps();
     }
 }
