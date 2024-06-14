@@ -12,9 +12,8 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $category = category::all();
-        $view_data = compact('category');
-        return view('product_category.index', $view_data);
+        $categories = category::all();
+        return view('product_category.index', compact('categories'));
     }
 
     /**
@@ -30,15 +29,14 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'name' => 'required|max:255',
-            'description' => 'required|max:255',
+        $name = $request->input('name');
+        $description = $request->input('description');
+
+        $categories = category::create([
+            'name' => $name,
+            'description' => $description
         ]);
-        $category = new category;
-        $category->name = $request->name;
-        $category->description = $request->description;
-        $category->save();
-        return redirect('/category')->with('status', 'Data category berhasil ditambahkan');
+        return redirect('category');
     }
 
     /**
@@ -55,8 +53,8 @@ class CategoryController extends Controller
      */
     public function edit(string $id)
     {
-        $ProductCategory = category::find($id);
-        return view('product_category.edit', compact('ProductCategory'));
+        $category = category::find($id);
+        return view('product_category.edit', compact('category'));
     }
 
     /**
@@ -72,7 +70,7 @@ class CategoryController extends Controller
         $category->name = $request->name;
         $category->description = $request->description;
         $category->save();
-        return redirect('/category')->with('status', 'Data category berhasil diubah');
+        return redirect('category');
     }
 
     /**
@@ -80,8 +78,8 @@ class CategoryController extends Controller
      */
     public function destroy(string $id)
     {
-        $category = category::find($id);
-        $category->delete();
-        return redirect('/category')->with('status', 'Data category berhasil dihapus');
+        category::where('id', '=', $id)->delete();
+
+        return redirect('category');
     }
 }
