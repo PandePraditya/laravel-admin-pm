@@ -3,17 +3,17 @@
 @section('title', 'Product Category')
 
 @section('content')
-    <div class="row">
+    <div class="row px-5">
         <div class="col">
             <h1>Product Category</h1>
         </div>
     </div>
-    <div class="row">
+    <div class="row px-5">
         <div class="col">
-            <a href="{{ url('category/create') }}" class="btn btn-primary">Create</a>
+            <a href="{{ route('category.create') }}" class="btn btn-primary">Create</a>
         </div>
     </div>
-    <div class="row">
+    <div class="row px-5">
         <div class="col">
             <table class="table">
                 <thead>
@@ -31,10 +31,10 @@
                             <td>{{ $category->name }}</td>
                             <td>{{ $category->description }}</td>
                             <td>
-                                <a href="{{ url("category/$category->id/edit") }}"><button class="btn btn-warning"> Edit </button></a>
-
+                                <a href="{{ route("category.show", $category->id) }}"><button class="btn btn-success"> Selengkapnya </button></a>
+                                <a href="{{ route("category.edit", $category->id) }}"><button class="btn btn-warning"> Edit </button></a>
                                 <!-- Delete button -->
-                                <form action="{{ url("category/$category->id") }}" method="POST" class="d-inline">
+                                <form action="{{ route("category.destroy", $category->id) }}" method="POST" class="d-inline">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" class="btn btn-danger"

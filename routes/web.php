@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\RegisterController;
 use Illuminate\Support\Facades\Route;
@@ -23,13 +24,18 @@ Route::get('/login', function () {
     return view('login');
 });
 
-Route::post('register', [RegisterController::class, 'index']);
+// untuk authentication
+Route::get('login', [AuthController::class, 'login'])->name('login');
+// Route::post('login', [AuthController::class, 'authenticate']);
+// Route::get('logout', [AuthController::class, 'logout']);
+Route::get('register', [AuthController::class, 'register_form'])->name('register'); // ambil data dari form register
+Route::post('register', [AuthController::class, 'register'])->name('register.store'); // untuk proses registrasi nya
 
 // untuk tabel category
-Route::post('category', [CategoryController::class, 'store']); // untuk memasukkan data dari form ke database
-Route::get('category', [CategoryController::class, 'index']); // halaman utama
-Route::get('category/create', [CategoryController::class, 'create']); // halaman create
-Route::get('category/{id}', [CategoryController::class, 'show']); // halaman detail dari category tersebut
-Route::get('category/{id}/edit', [CategoryController::class, 'edit']); // halaman edit
-Route::patch('category/{id}', [CategoryController::class, 'update']); // untuk memperbarui data dari form ke database
-Route::delete('category/{id}', [CategoryController::class, 'destroy']); // untuk menghapus data
+Route::post('category', [CategoryController::class, 'store'])->name('category.store'); // untuk memasukkan data dari form ke database
+Route::get('category', [CategoryController::class, 'index'])->name('category'); // halaman utama
+Route::get('category/create', [CategoryController::class, 'create'])->name('category.create'); // halaman create
+Route::get('category/{id}', [CategoryController::class, 'show'])->name('category.show'); // halaman detail dari category tersebut
+Route::get('category/{id}/edit', [CategoryController::class, 'edit'])->name('category.edit'); // halaman edit
+Route::patch('category/{id}', [CategoryController::class, 'update'])->name('category.update'); // untuk memperbarui data dari form ke database
+Route::delete('category/{id}', [CategoryController::class, 'destroy'])->name('category.destroy'); // untuk menghapus data

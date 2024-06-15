@@ -4,7 +4,7 @@
 
 @section('content')
     <h1> Ubah Category {{ $category->name }} </h1>
-    <form action="{{ url("category/$category->id") }}" method="POST" 
+    <form action="{{ route("category.update", $category->id) }}" method="POST" 
     class="form-control">
     @method('PATCH')
     @csrf

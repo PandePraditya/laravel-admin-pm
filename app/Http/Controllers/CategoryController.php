@@ -32,7 +32,7 @@ class CategoryController extends Controller
         $name = $request->input('name');
         $description = $request->input('description');
 
-        $categories = category::create([
+        category::create([
             'name' => $name,
             'description' => $description
         ]);
@@ -44,8 +44,8 @@ class CategoryController extends Controller
      */
     public function show(string $id)
     {
-        $ProductCategory = category::find($id);
-        return view('product_category.show', compact('ProductCategory'));
+        $category = category::find($id);
+        return view('product_category.show', compact('category'));
     }
 
     /**
@@ -62,15 +62,15 @@ class CategoryController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $request->validate([
-            'name' => 'required|max:255',
-            'description' => 'required|max:255',
+        $name = $request->input('name');
+        $description = $request->input('description');
+        
+        category::where('id', '=', $id)->update([
+            'name' => $name,
+            'description' => $description,
         ]);
-        $category = category::find($id);
-        $category->name = $request->name;
-        $category->description = $request->description;
-        $category->save();
-        return redirect('category');
+        
+        return redirect("category");
     }
 
     /**
@@ -79,7 +79,6 @@ class CategoryController extends Controller
     public function destroy(string $id)
     {
         category::where('id', '=', $id)->delete();
-
         return redirect('category');
     }
 }

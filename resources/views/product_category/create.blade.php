@@ -4,7 +4,7 @@
     
 @section('content')
     <h1> Buat Category Baru </h1>
-    <form action="{{ url('category') }}" method="POST" 
+    <form action="{{ route('category.store') }}" method="POST" 
     class="form-control">
     @csrf
         <div class="mb-3">
