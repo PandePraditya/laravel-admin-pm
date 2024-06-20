@@ -18,5 +18,8 @@
         </div>
         <button type="submit" class="btn btn-success">Simpan</button>
     </form>
+    <div class="mt-4">
+        <a href="{{ route("category") }}"> <button class="btn btn-primary">Kembali</button> </a>
+    </div>
 @endsection
 

@@ -26,7 +26,7 @@
                         <div class="d-flex justify-content-center"> 
                             <button type="submit" class="btn btn-primary w-50">Login</button>
                         </div>
-                        
+
                     </div>
                     <p class="text-center d-block py-3"> Buat akun <a href="{{ route('register') }}"> Register</a></p>
                 </form>

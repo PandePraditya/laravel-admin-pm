@@ -9,12 +9,14 @@
 </head>
 
 <body>
-    @include('component.header')
+    <div class="d-flex overflow-hidden">    
+        @include('component.header')
 
-    <div class="container-fluid p-0">
-        
-        @yield('content')
+        <div class="container-fluid p-0 m-2">
+            
+            @yield('content')
 
+        </div>
         @include('component.footer')
     </div>
     <!-- JS bootstrap.bundle.js -->

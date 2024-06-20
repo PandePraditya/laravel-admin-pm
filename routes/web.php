@@ -20,10 +20,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/login', function () {
-    return view('login');
-});
-
 // untuk authentication
 Route::get('login', [AuthController::class, 'login'])->name('login');
 // Route::post('login', [AuthController::class, 'authenticate']);

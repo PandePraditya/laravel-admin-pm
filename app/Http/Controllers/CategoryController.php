@@ -13,7 +13,7 @@ class CategoryController extends Controller
     public function index()
     {
         $categories = category::all();
-        return view('product_category.index', compact('categories'));
+        return view('categories.index', compact('categories'));
     }
 
     /**
@@ -21,7 +21,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        return view('product_category.create');
+        return view('categories.create');
     }
 
     /**
@@ -29,6 +29,11 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'name' => 'required',
+            'description' => 'required',
+        ]);
+        
         $name = $request->input('name');
         $description = $request->input('description');
 
@@ -45,7 +50,7 @@ class CategoryController extends Controller
     public function show(string $id)
     {
         $category = category::find($id);
-        return view('product_category.show', compact('category'));
+        return view('categories.show', compact('category'));
     }
 
     /**
@@ -54,7 +59,7 @@ class CategoryController extends Controller
     public function edit(string $id)
     {
         $category = category::find($id);
-        return view('product_category.edit', compact('category'));
+        return view('categories.edit', compact('category'));
     }
 
     /**
@@ -62,12 +67,17 @@ class CategoryController extends Controller
      */
     public function update(Request $request, string $id)
     {
+        $request->validate([
+            'name' => 'required',
+            'description' => 'required',
+        ]);
+
         $name = $request->input('name');
         $description = $request->input('description');
         
         category::where('id', '=', $id)->update([
             'name' => $name,
-            'description' => $description,
+            'description' => $description
         ]);
         
         return redirect("category");
