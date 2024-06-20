@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Api\CategoryApi;
+use App\Http\Controllers\CategoryController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -14,6 +16,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
+// Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+//     return $request->user();
+// });
+
+Route::get('category/get-data', [CategoryApi::class, 'getData']);
+Route::get('category/find/{id}', [CategoryApi::class, 'find']);
+Route::post('category/create', [CategoryApi::class, 'create']);
+Route::patch('category/update/{id}', [CategoryApi::class, 'update']);
+Route::delete('category/delete/{id}', [CategoryApi::class, 'delete']);
