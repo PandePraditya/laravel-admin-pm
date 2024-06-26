@@ -30,6 +30,7 @@ class CategoryApi extends Controller
         ], 200);
     }
 
+    // in postman use Raw input using JSON format
     public function update(Request $request, string $id) {
         $request->validate([
             'name' => 'required|unique:categories,name,'.$id.',id',

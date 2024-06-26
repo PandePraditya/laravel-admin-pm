@@ -12,7 +12,12 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $categories = category::all();
+        /*
+        * (untuk pagination)
+        * untuk menggunakan pagination bootstrap, definisikan 
+        * Method paginator di provider AppServiceProvider
+        */
+        $categories = category::paginate(5);
         return view('categories.index', compact('categories'));
     }
 

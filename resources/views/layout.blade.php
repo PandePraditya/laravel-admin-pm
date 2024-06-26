@@ -5,13 +5,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}">
+    <link rel="stylesheet" href="{{ asset('icons/bootstrap-icons/font/bootstrap-icons.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <title> @yield('title') </title>
 </head>
 
 <body>
     <div class="d-flex overflow-hidden">    
-        @include('component.header')
-
+        @include('component.sidebar')
+        
         <div class="container-fluid p-0 m-2">
             
             @yield('content')
