@@ -1,6 +1,6 @@
 @extends('layout')
 
-@section('title', 'Ubah Category')
+@section('title', 'Change Category')
 
 @section('content')
     <h1> Ubah Category {{ $category->name }} </h1>

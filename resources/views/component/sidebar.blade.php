@@ -1,21 +1,3 @@
-{{-- <nav class="navbar navbar-expand-lg bg-body-tertiary">
-    <div class="container-fluid">
-        <a class="navbar-brand" href="{{ route('category') }}">Laravel</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="text-end">
-
-            <a href="{{ route('login') }}" class="btn btn-outline-dark me-2">Logout</a>
-
-            <a href="{{ route('login') }}" class="btn btn-outline-dark me-2">Login</a>
-            <a href="{{ route('register') }}" class="btn btn-outline-dark me-2">Register</a>
-
-        </div>
-    </div>
-</nav> --}}
-
 {{-- Off canvas navbar --}}
 {{-- <nav class="navbar bg-body-tertiary fixed-top ps-4">
     <div class="container-fluid">

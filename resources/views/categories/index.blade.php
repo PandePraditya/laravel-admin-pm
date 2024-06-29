@@ -8,7 +8,7 @@
             <div class="card">
                 {{-- card header --}}
                 <div class="card-header">
-                    <h3 class="card-title">Data Category Product</h3>
+                    <h3 class="card-title">Data Category Products</h3>
                 </div>
                 {{-- card body --}}
                 <div class="card-body">

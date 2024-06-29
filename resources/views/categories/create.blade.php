@@ -1,6 +1,6 @@
 @extends('layout')
 
-@section('title', 'Buat Category')
+@section('title', 'Create Category')
     
 @section('content')
     <h1> Buat Category Baru </h1>

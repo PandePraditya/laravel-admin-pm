@@ -10,6 +10,6 @@
 
             <p>{{ $category->description }}</p>
         </article>
-        <a href="{{ route("category.index") }}"> <button class="btn btn-primary">Kembali</button> </a>
+        <a href="{{ route("category.index") }}"> <button class="btn btn-primary">Kembali</button></a>
     </div>
 @endsection

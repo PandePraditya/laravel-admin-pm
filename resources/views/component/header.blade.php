@@ -7,6 +7,6 @@
 
     <div class="col-md-3 text-end">
         <a href="{{ route('login') }}" class="btn btn-outline-primary me-2">Login</a>
-        <a href="{{ route('register') }}" class="btn btn-primary">Sign Up</a>
+        <a href="{{ route('register') }}" class="btn btn-primary">Sign up</a>
     </div>
 </header>
