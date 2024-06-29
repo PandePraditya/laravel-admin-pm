@@ -63,71 +63,77 @@
 <aside class="main-sidebar sidebar-dark-primary elevation-4 z-1">
     <div class="d-flex flex-column flex-shrink-0 p-3 bg-body-tertiary vh-100" style="width: 280px;">
         <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
-            <svg class="bi pe-none me-2" width="40" height="32">
-                <use xlink:href="#bootstrap"></use>
-            </svg>
-            <span class="fs-4">Sidebar</span>
+            <i class="bi bi-shop fs-1 me-2"></i>
+            <span class="fs-4">Toko</span>
         </a>
+        <hr>
+        <div class="dropdown ms-2">
+            @if (Auth::check())
+                <a href="#" class="d-flex align-items-center link-body-emphasis text-decoration-none dropdown-toggle"
+                    data-bs-toggle="dropdown" aria-expanded="false">
+                    <img src="" alt="" width="32" height="32"
+                        class="rounded-circle me-2">
+                    <strong>{{ Auth::user()->name }}</strong>
+                </a>
+                <ul class="dropdown-menu text-small shadow" style="">
+                    <li><a class="dropdown-item" href="#">New project...</a></li>
+                    <li><a class="dropdown-item" href="#">Settings</a></li>
+                    <li><a class="dropdown-item" href="#">Profile</a></li>
+                    <li>
+                        <hr class="dropdown-divider">
+                    </li>
+                    <li>
+                        <form action="{{ route('logout') }}" method="POST">
+                        @csrf
+                            <button type="submit" class="dropdown-item" href="{{ route('logout') }}" onclick="return confirm('Are you sure you want to delete this category?')">Sign out</button>
+                        </form>
+                    </li>
+                </ul>
+            @else
+                <div class="d-flex justify-content-around">
+                    <a href="{{ route('login') }}" class="nav-link">Login</a>
+                    <a href="{{ route('register') }}" class="nav-link">Register</a>
+                </div>
+            @endif
+        </div>
         <hr>
         <ul class="nav nav-pills flex-column mb-auto">
             <li class="nav-item">
-                <a href="{{ url('/') }}" class="nav-link" aria-current="page">
-                    <svg class="bi pe-none me-2" width="16" height="16">
-                        <use xlink:href="#home"></use>
-                    </svg>
-                    Dashboard
+                <a href="{{ url('/') }}" class="nav-link d-flex align-items-center" aria-current="page">
+                    <i class="bi bi-speedometer me-2 fs-4"></i>
+                    <span>Dashboard</span>
                 </a>
             </li>
-            <li>
-                <a href="{{ route('category.index') }}" class="nav-link {{ Request::is('category') ? 'active' : '' }}">
-                    <svg class="bi pe-none me-2" width="16" height="16">
-                        <use xlink:href="#speedometer2"></use>
-                    </svg>
-                    Category
+            <li class="nav-item">
+                <a href="{{ route('category.index') }}" class="nav-link d-flex align-items-center {{ Request::is('category') ? 'active' : '' }}">
+                    <i class="bi bi-inboxes me-2 fs-4"></i>
+                    <span>Category</span>
                 </a>
             </li>
-            <li>
-                <a href="#" class="nav-link">
-                    <svg class="bi pe-none me-2" width="16" height="16">
-                        <use xlink:href="#table"></use>
-                    </svg>
-                    Orders
+            <li class="nav-item">
+                <a href="#" class="nav-link d-flex align-items-center">
+                    <i class="bi bi-receipt me-2 fs-4"></i>
+                    <span>Transaction</span>
                 </a>
             </li>
-            <li>
-                <a href="#" class="nav-link">
-                    <svg class="bi pe-none me-2" width="16" height="16">
-                        <use xlink:href="#grid"></use>
-                    </svg>
-                    Products
+            <li class="nav-item">
+                <a href="{{ route('product.index') }}" class="nav-link d-flex align-items-center {{ Request::is('product') ? 'active' : '' }}" class="nav-link">
+                    <i class="bi bi-bag me-2 fs-4"></i>
+                    <span>Products</span>
                 </a>
             </li>
-            <li>
-                <a href="#" class="nav-link">
-                    <svg class="bi pe-none me-2" width="16" height="16">
-                        <use xlink:href="#people-circle"></use>
-                    </svg>
-                    Customers
+            <li class="nav-item">
+                <a href="#" class="nav-link d-flex align-items-center">
+                    <i class="bi bi-people me-2 fs-4"></i>
+                    <span>Member</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link d-flex align-items-center">
+                    <i class="bi bi-box-seam me-2 fs-4"></i>
+                    <span>Package</span>
                 </a>
             </li>
         </ul>
-        <div class="dropdown mt-auto">
-            <hr>
-            <a href="#" class="d-flex align-items-center link-body-emphasis text-decoration-none dropdown-toggle"
-                data-bs-toggle="dropdown" aria-expanded="false">
-                <img src="" alt="" width="32" height="32"
-                    class="rounded-circle me-2">
-                <strong>Pande</strong>
-            </a>
-            <ul class="dropdown-menu text-small shadow" style="">
-                <li><a class="dropdown-item" href="#">New project...</a></li>
-                <li><a class="dropdown-item" href="#">Settings</a></li>
-                <li><a class="dropdown-item" href="#">Profile</a></li>
-                <li>
-                    <hr class="dropdown-divider">
-                </li>
-                <li><a class="dropdown-item" href="#">Sign out</a></li>
-            </ul>
-        </div>
     </div>
 </aside>

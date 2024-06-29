@@ -4,98 +4,64 @@
 
 @section('content')
 
-    <div class="wrapper">
-        {{-- Sidebar --}}
-        <aside id="sidebar">
-            <div class="d-flex">
-                <button id="toggle-btn" type="button">
-                    <i class="bi bi-grid"></i>
-                </button>
-                <div class="sidebar-logo">
-                    <a href="#">Laravel</a>
+<div class="row p-3">
+    <div class="col">
+        <div class="card">
+            {{-- card header --}}
+            <div class="card-header">
+                <h3 class="card-title">Data Product</h3>
+            </div>
+            {{-- card body --}}
+            <div class="card-body">
+                <a href="{{ route('product.create') }}"><button class="btn btn-primary my-2"> Tambah </button></a>
+                {{-- table --}}
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">No</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Unit</th>
+                            <th scope="col">Minimal Stock</th>
+                            <th scope="col">Maximal Stock</th>
+                            <th scope="col">Stock</th>
+                            <th scope="col">Selling Price</th>
+                            <th scope="col">Purchase Price</th>
+                            <th scope="col">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($categories as $category)
+                            <tr class="align-middle">
+                                {{-- <th scope="row">1</th> --}}
+                                <th scope="row">{{ ($categories->currentPage() - 1) * $categories->perPage() + $loop->iteration }}</th>
+                                <td>{{ $category->name }}</td>
+                                <td>{{ $category->description }}</td>
+                                <td>
+                                    <a href="{{ route('category.show', $category->id) }}"><button
+                                            class="btn btn-success"> Selengkapnya </button></a>
+                                    <a href="{{ route('category.edit', $category->id) }}"><button
+                                            class="btn btn-warning ms-2"> Edit </button></a>
+                                    <!-- Delete button -->
+                                    <form action="{{ route('category.destroy', $category->id) }}" method="POST"
+                                        class="d-inline">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="btn btn-danger ms-2" onclick="return confirm('Are you sure you want to delete this category?')">
+                                            Delete
+                                        </button>
+                                    </form>
+                                </td>
+                            </tr>
+                        @endforeach
+                </table>
+                {{-- End table --}}
+                <div class="d-flex pt-3">
+                    {{ $categories->links() }}
                 </div>
             </div>
-            {{-- Sidebar nav --}}
-            <ul class="sidebard-nav">
-                <li class="sidebar-item">
-                    <a href="#" class="sidebar-link">
-                        <i class="bi bi-people"></i>
-                        <span>Profile</span>
-                    </a>
-                </li>
-                <li class="sidebar-item">
-                    <a href="#" class="sidebar-link">
-                        <i class="bi bi-list-task"></i>
-                        <span>Task</span>
-                    </a>
-                </li>
-                {{-- Auth --}}
-                <li class="sidebar-item">
-                    <a href="#" class="sidebar-link collapsed has-dropdown" data-bs-toggle="collapse"
-                        data-bs-target="#auth" aria-expanded="false" aria-controls="auth">
-                        <i class="bi bi-shield-check"></i>
-                        <span>Auth</span>
-                    </a>
-                    <ul id="auth" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
-                        <li class="sidebar-item">
-                            <a href="#" class="sidebar-link">Login</a>
-                        </li>
-                        <li class="sidebar-item">
-                            <a href="#" class="sidebar-link">Register</a>
-                        </li>
-                    </ul>
-                </li>
-                {{-- Auth end --}}
-
-                {{-- Multi level --}}
-                <li class="sidebar-item">
-                    <a href="#" class="sidebar-link collapsed has-dropdown" data-bs-toggle="collapse"
-                        data-bs-target="#multi" aria-expanded="false" aria-controls="multi">
-                        <i class="lni lni-layout"></i>
-                        <span>Multi Level</span>
-                    </a>
-                    <ul id="multi" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
-                        <li class="sidebar-item">
-                            <a href="#" class="sidebar-link collapsed" data-bs-toggle="collapse"
-                                data-bs-target="#multi-two" aria-expanded="false" aria-controls="multi-two">
-                                Two Links
-                            </a>
-                            {{-- Multi level two --}}
-                            <ul id="multi-two" class="sidebar-dropdown list-unstyled collapse">
-                                <li class="sidebar-item">
-                                    <a href="#" class="sidebar-link">Link 1</a>
-                                </li>
-                                <li class="sidebar-item">
-                                    <a href="#" class="sidebar-link">Link 2</a>
-                                </li>
-                            </ul>
-                            {{-- Multi level two end --}}
-                        </li>
-                    </ul>
-                </li>
-                {{-- Multi level end --}}
-                <li class="sidebar-item">
-                    <a href="#" class="sidebar-link">
-                        <i class="bi bi-chat-square-dots"></i>
-                        <span>Notification</span>
-                    </a>
-                </li>
-                <li class="sidebar-item">
-                    <a href="#" class="sidebar-link">
-                        <i class="bi bi-gear"></i>
-                        <span>Setting</span>
-                    </a>
-                </li>
-            </ul>
-            <div class="sidebar-footer">
-                <a href="#" class="sidebar-link">
-                    <i class="bi bi-box-arrow-in-left"></i>
-                    <span>Logout</span>
-                </a>
-            </div>
-            {{-- Sidebar nav end --}}
-        </aside>
-        {{-- Sidebar end --}}
+            {{-- End card body --}}
+        </div>
     </div>
+</div>
 
 @endsection

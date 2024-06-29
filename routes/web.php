@@ -22,14 +22,14 @@ Route::get('/', function () {
 });
 
 // untuk authentication
-Route::get('login', [AuthController::class, 'login'])->name('login');
-// Route::post('login', [AuthController::class, 'authenticate']);
-// Route::get('logout', [AuthController::class, 'logout']);
-Route::get('register', [AuthController::class, 'register_form'])->name('register'); // ambil data dari form register
-Route::post('register', [AuthController::class, 'register'])->name('register.store'); // untuk proses registrasi nya
+Route::get('login', [AuthController::class, 'login'])->name('login')->middleware('guest');
+Route::post('login', [AuthController::class, 'authenticate'])->name('login.authenticate');
+Route::post('logout', [AuthController::class, 'logout'])->name('logout');
+Route::get('register', [AuthController::class, 'register_form'])->name('register')->middleware('guest'); // ambil data dari form register
+Route::post('register', [AuthController::class, 'register']); // untuk proses registrasi nya
 
 // untuk tabel category
-Route::resource('category', CategoryController::class);
+Route::resource('category', CategoryController::class)->middleware('auth');
 
 // Untuk tabel product
-Route::get('product', [ProductController::class, 'index'])->name('product.index'); // untuk menampilkan data product
+Route::resource('product', ProductController::class)->middleware('auth'); // untuk menampilkan data product
