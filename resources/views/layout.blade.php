@@ -14,7 +14,7 @@
     <div class="d-flex overflow-hidden">    
         @include('component.sidebar')
         
-        <div class="container-fluid p-0 m-2">
+        <div class="container-fluid p-3 m-2">
             
             @yield('content')
 

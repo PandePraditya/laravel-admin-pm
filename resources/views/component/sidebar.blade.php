@@ -49,6 +49,7 @@
             <span class="fs-4">Toko</span>
         </a>
         <hr>
+        {{-- Dropdown profile --}}
         <div class="dropdown ms-2">
             @if (Auth::check())
                 <a href="#" class="d-flex align-items-center link-body-emphasis text-decoration-none dropdown-toggle"
@@ -79,6 +80,7 @@
             @endif
         </div>
         <hr>
+        {{-- Menu sidebar --}}
         <ul class="nav nav-pills flex-column mb-auto">
             <li class="nav-item">
                 <a href="{{ url('/') }}" class="nav-link d-flex align-items-center" aria-current="page">
@@ -87,7 +89,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a href="{{ route('category.index') }}" class="nav-link d-flex align-items-center {{ Request::is('category') ? 'active' : '' }}">
+                <a href="{{ route('category.index') }}" class="nav-link d-flex align-items-center {{ Request::is('category', 'category/create', 'category/edit/*', 'category/*') ? 'active' : '' }}">
                     <i class="bi bi-inboxes me-2 fs-4"></i>
                     <span>Category</span>
                 </a>
@@ -99,7 +101,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a href="{{ route('product.index') }}" class="nav-link d-flex align-items-center {{ Request::is('product') ? 'active' : '' }}" class="nav-link">
+                <a href="{{ route('product.index') }}" class="nav-link d-flex align-items-center {{ Request::is('product', 'product/create', 'product/edit/*', 'product/*') ? 'active' : '' }}" class="nav-link">
                     <i class="bi bi-bag me-2 fs-4"></i>
                     <span>Products</span>
                 </a>

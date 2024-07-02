@@ -4,7 +4,7 @@
 
 @section('content')
 
-<div class="row p-3">
+<div class="row">
     <div class="col">
         <div class="card">
             {{-- card header --}}
@@ -30,19 +30,24 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($categories as $category)
+                        @foreach ($products as $product)
                             <tr class="align-middle">
                                 {{-- <th scope="row">1</th> --}}
-                                <th scope="row">{{ ($categories->currentPage() - 1) * $categories->perPage() + $loop->iteration }}</th>
-                                <td>{{ $category->name }}</td>
-                                <td>{{ $category->description }}</td>
+                                <th scope="row">{{ ($products->currentPage() - 1) * $products->perPage() + $loop->iteration }}</th>
+                                <td>{{ $product->name }}</td>
+                                <td>{{ $product->unit }}</td>
+                                <td>{{ $product->minimal_stock }}</td>
+                                <td>{{ $product->maximal_stock }}</td>
+                                <td>{{ $product->stock }}</td>
+                                <td>${{ $product->selling_price }}</td>
+                                <td>${{ $product->purchase_price }}</td>
                                 <td>
-                                    <a href="{{ route('category.show', $category->id) }}"><button
+                                    <a href="{{ route('product.show', $product->id) }}"><button
                                             class="btn btn-success"> Selengkapnya </button></a>
-                                    <a href="{{ route('category.edit', $category->id) }}"><button
+                                    <a href="{{ route('product.edit', $product->id) }}"><button
                                             class="btn btn-warning ms-2"> Edit </button></a>
                                     <!-- Delete button -->
-                                    <form action="{{ route('category.destroy', $category->id) }}" method="POST"
+                                    <form action="{{ route('product.destroy', $product->id) }}" method="POST"
                                         class="d-inline">
                                         @csrf
                                         @method('DELETE')
@@ -56,7 +61,7 @@
                 </table>
                 {{-- End table --}}
                 <div class="d-flex pt-3">
-                    {{ $categories->links() }}
+                    {{ $products->links() }}
                 </div>
             </div>
             {{-- End card body --}}
